@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MVVM.Views.MainPage"
+             Title="REST Web Services"
+             xmlns:ViewModels="clr-namespace:MVVM.ViewModels;assembly=MVVM">
+  
+  <ContentPage.BindingContext>
+    
+    <ViewModels:MainViewModel />
+ 
+  </ContentPage.BindingContext>
+
+  <StackLayout Orientation="Vertical">
+    
+    <Button Text="Add New Task"
+        Clicked="Button_OnClicked">
+    </Button>
+ 
+   <ListView x:Name="EmployeesList" ItemsSource="{Binding EmployeeList}"
+            HasUnevenRows="True"
+            ItemTapped="ListView_OnItemTapped">
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <StackLayout Orientation="Vertical"
+                       Padding="12,6">
+            
+            <Label Text="{Binding FullName}" 
+                   FontSize="24"/>
+            <Label Text="{Binding Department}" 
+                   FontSize="18"
+                    Opacity="0.6"/>
+          
+          </StackLayout>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+    
+  </ListView>
+</StackLayout>
+</ContentPage>
